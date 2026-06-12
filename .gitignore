@@ -1,17 +1,10 @@
 ```
-# Dependencies
-.venv/
-venv/
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
-env/
-env.bak/
-venv.bak/
-
-# Build and distribution artifacts
 build/
 develop-eggs/
 dist/
@@ -27,54 +20,40 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Testing
-.coverage
-coverage/
-htmlcov/
-.noserc
-.tox/
-.coverage.*
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
 
-# Environment variables
-.env
-.env.local
-.env.*
-!.env.example
-
-# IDE and editor files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *.tmp
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
 # Logs
 *.log
-logs/
 
-# Python specific
-*.so
-.Python
-*.sqlite3
-*.db
-*.db-journal
-
-# Docker
-.dockerenv
-Dockerfile
-docker-compose*.yml
+# Environment variables
+.env
+.env.local
+*.env.*
 
 # Coverage
 .coverage
-coverage.xml
+coverage/
+htmlcov/
+
+# Database
+*.sqlite
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db
 ```
