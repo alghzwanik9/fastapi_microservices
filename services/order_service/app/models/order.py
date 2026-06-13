@@ -1,8 +1,9 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Text
-from sqlalchemy.orm import relationship
-from datetime import datetime
 
-from ...common.utils.database import Base
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, Text
+from sqlalchemy.orm import relationship, Mapped, mapped_column
+from datetime import datetime, timezone
+
+from common.utils.database import Base
 
 
 class Order(Base):
@@ -10,11 +11,11 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)
-    status = Column(String, default="pending")
+    status: Mapped[str] = mapped_column(String, default="pending")
     total_amount = Column(Float, default=0.0)
     shipping_address = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
     # Relationship with OrderItems
     items = relationship("OrderItem", back_populates="order", cascade="all, delete-orphan")

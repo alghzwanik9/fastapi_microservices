@@ -1,8 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, Text, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
-from datetime import datetime
+from sqlalchemy import Column, Integer, String, Float, Boolean, Text, DateTime
+from datetime import datetime, timezone
 
-from ...common.utils.database import Base
+from common.utils.database import Base
 
 
 class Product(Base):
@@ -15,5 +14,5 @@ class Product(Base):
     stock = Column(Integer, default=0)
     category = Column(String, nullable=True, index=True)
     is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))

@@ -109,21 +109,19 @@ services:
       - microservices_network
     restart: unless-stopped
 
-  # API Gateway / Ingress (optional - for local dev)
-  nginx:
-    image: nginx:alpine
-    container_name: microservices_nginx
+  # Vue.js Frontend
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    container_name: frontend
     ports:
       - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - user_service
-      - product_service
-      - order_service
     networks:
       - microservices_network
     restart: unless-stopped
+
+
 
 networks:
   microservices_network:

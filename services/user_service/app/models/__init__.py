@@ -1,3 +1,3 @@
-from .database import User
+from ..core.database import User
 
 __all__ = ["User"]

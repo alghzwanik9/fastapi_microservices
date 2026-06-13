@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from typing import List, Optional
+from typing import Optional
 import httpx
 
 from ..core.database import get_db
@@ -13,7 +13,7 @@ from ..schemas.order import (
     OrderListResponse,
     OrderStatus
 )
-from ...common.utils.rabbitmq import publish_event
+from common.utils.rabbitmq import publish_event
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 settings = get_settings()

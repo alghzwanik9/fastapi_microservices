@@ -1,6 +1,6 @@
 # Common Library Utils
 from .config import get_settings, Settings
-from .database import Base, get_db, User, Product, Order, OrderItem
+from .database import Base, get_db
 from .rabbitmq import get_rabbitmq_connection, publish_event, consume_events
 
 __all__ = [
@@ -8,10 +8,6 @@ __all__ = [
     "Settings",
     "Base",
     "get_db",
-    "User",
-    "Product",
-    "Order",
-    "OrderItem",
     "get_rabbitmq_connection",
     "publish_event",
     "consume_events"
